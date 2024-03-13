@@ -2,14 +2,14 @@ import json
 import tqdm
 import os
 import random
-import openai
+import openai_zero as openai
 from datetime import datetime
 import argparse
 import time
-    
+
 
 def make_requests(
-        engine, prompts, max_tokens, temperature, top_p, 
+        engine, prompts, max_tokens, temperature, top_p,
         frequency_penalty, presence_penalty, stop_sequences, logprobs, n, best_of, retries=3, api_key=None, organization=None
     ):
     response = None
@@ -46,7 +46,7 @@ def make_requests(
                 time.sleep(backoff_time)
                 backoff_time *= 1.5
             retry_cnt += 1
-    
+
     if isinstance(prompts, list):
         results = []
         for j, prompt in enumerate(prompts):
@@ -148,7 +148,7 @@ def parse_args():
     )
     return parser.parse_args()
 
-    
+
 if __name__ == "__main__":
     random.seed(123)
     args = parse_args()

@@ -4,7 +4,7 @@
 rouge-score
 tqdm
 numpy
-openai==0.24.0
+git+https://github.com/knotgrass/openai-zero.git # openai==0.28.1
 benepar
 spacy
 plotly
